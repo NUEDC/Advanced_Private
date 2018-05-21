@@ -12,3 +12,4 @@
 2、在老一代版本基础上，对函数内的uint port 进行了修改，更改为另一种类型变量，GPIO_TypeDef* GPIOx
    可以直接设置GPIOA等，减小Switch量
 3、变量定义部分define在stm32f10x_define.h中，此函数加在了标准库文件中
+4、还未完成实际测试
