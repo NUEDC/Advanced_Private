@@ -40,6 +40,9 @@
 #define MID_Speed                   10
 #define HIGH_Speed                  50
 
+#define High                        1
+#define Low                         0
+
 typedef struct  
 {
 	char GPIO_PORT;       //引脚Port单独定义
