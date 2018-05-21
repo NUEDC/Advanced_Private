@@ -25,6 +25,7 @@
 ".\objects\stm32f10x_tim.o"
 ".\objects\stm32f10x_usart.o"
 ".\objects\stm32f10x_wwdg.o"
+".\objects\stm32f10x_define.o"
 ".\objects\main.o"
 ".\objects\stm32f10x_it.o"
 ".\objects\gpio_config.o"

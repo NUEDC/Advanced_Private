@@ -520,6 +520,16 @@
               <FileType>1</FileType>
               <FilePath>..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32f10x_define.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_define.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_define.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_define.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -539,11 +549,6 @@
               <FileName>GPIO_Config.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\GPIO_LIB\GPIO_Config.c</FilePath>
-            </File>
-            <File>
-              <FileName>GPIO_Config.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\User\GPIO_LIB\GPIO_Config.h</FilePath>
             </File>
           </Files>
         </Group>

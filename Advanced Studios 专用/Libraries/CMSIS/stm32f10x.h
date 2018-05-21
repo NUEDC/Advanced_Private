@@ -1333,6 +1333,43 @@ typedef struct
 #define TIM10_BASE            (APB2PERIPH_BASE + 0x5000)
 #define TIM11_BASE            (APB2PERIPH_BASE + 0x5400)
 
+//自行插入
+
+#define GPIOA_SET                    1
+#define GPIOB_SET                    2
+#define GPIOC_SET                    3
+#define GPIOD_SET                    4
+#define GPIOE_SET                    5
+#define GPIOF_SET                    6
+#define GPIOG_SET                    7
+
+#define pin0                         0
+#define pin1                         1
+#define pin2                         2
+#define pin3                         3
+#define pin4                         4
+#define pin5                         5
+#define pin6                         6
+#define pin7                         7
+#define pin8                         8
+#define pin9                         9
+#define pin10                       10
+#define pin11                       11
+#define pin12                       12
+#define pin13                       13
+#define pin14                       14
+#define pin15                       15
+#define pin16                       16
+
+#define LOW_Speed                    2
+#define MID_Speed                   10
+#define HIGH_Speed                  50
+
+//结束
+
+
+
+
 #define SDIO_BASE             (PERIPH_BASE + 0x18000)
 
 #define DMA1_BASE             (AHBPERIPH_BASE + 0x0000)
