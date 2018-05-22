@@ -17,14 +17,19 @@
 添加项目：（串口函数）
 extern int UART_CONFIG(uint UARTx,uint BaudRate,uint Word_Length,uint Stop_Bits,uint Parity); 
 extern void Usart_SendByte( USART_TypeDef * pUSARTx, uint8_t ch); 
-extern void Usart_SendString( USART_TypeDef * pUSARTx, char *str);  
+extern void Usart_SendString( USART_TypeDef * pUSARTx, char *str);  
 extern void Usart_SendHalfWord( USART_TypeDef * pUSARTx, uint16_t ch); 
 extern void Usart_SendArray( USART_TypeDef * pUSARTx, uint8_t *array, uint16_t num);
 extern int fputc(int ch, FILE *f);
 extern int fgetc(FILE *f);
 具体的一些变化声明变化可以再stm32f10x_define.h里有相应的声明
 还没有通过测试
-/*********/
+/****5.22修改意见*****/
 1.整合时钟在GPIO_INIT和FAST_INIT中
 2.增加USART快速设置函数
 1.增加默认PRINTF函数串口更改
+/*****2018.5.23*****/
+1、添加了时钟设置函数在GPIO_INIT
+2、添加了USART快速设置函数
+3、增加了默认printf函数重定向功能
+4、测试了部分GPIO_INIT_LIB内的函数，部分功能可以实现
