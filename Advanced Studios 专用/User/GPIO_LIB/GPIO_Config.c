@@ -315,6 +315,7 @@ Change_Port_Mode(GPIO_TypeDef* GPIOx,uint pin,uint mode,uint Speed)
 int Change_Port_Mode(GPIO_TypeDef* GPIOx,uint pin,uint mode,uint Speed)
 {
   GPIO_INIT(GPIOx,pin,Speed,mode);
+	return 0;
 }
  /*
 端口静默函数 断开端口时钟 USER SHEET
@@ -438,4 +439,3 @@ u16 GPIO_Read_Port(GPIO_TypeDef* GPIOx)
 	Read_Val = GPIO_ReadInputData(GPIOx);
 	return Read_Val;
 }
- /**/ 

@@ -40,8 +40,17 @@
 #define MID_Speed                   10
 #define HIGH_Speed                  50
 
-#define High                        1
-#define Low                         0
+#define High                         1
+#define Low                          0
+
+#define UART0_SET                    0
+#define UART1_SET                    1
+#define UART2_SET                    2
+#define UART3_SET                    3
+#define UART4_SET                    4
+#define UART5_SET                    5
+
+
 
 typedef struct  
 {
