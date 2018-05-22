@@ -24,3 +24,7 @@ extern int fputc(int ch, FILE *f);
 extern int fgetc(FILE *f);
 具体的一些变化声明变化可以再stm32f10x_define.h里有相应的声明
 还没有通过测试
+/*********/
+1.整合时钟在GPIO_INIT和FAST_INIT中
+2.增加USART快速设置函数
+1.增加默认PRINTF函数串口更改
