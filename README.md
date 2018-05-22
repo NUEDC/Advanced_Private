@@ -13,3 +13,14 @@
    可以直接设置GPIOA等，减小Switch量
 3、变量定义部分define在stm32f10x_define.h中，此函数加在了标准库文件中
 4、还未完成实际测试
+/*********2018/5/22************/
+添加项目：（串口函数）
+extern int UART_CONFIG(uint UARTx,uint BaudRate,uint Word_Length,uint Stop_Bits,uint Parity); 
+extern void Usart_SendByte( USART_TypeDef * pUSARTx, uint8_t ch); 
+extern void Usart_SendString( USART_TypeDef * pUSARTx, char *str);  
+extern void Usart_SendHalfWord( USART_TypeDef * pUSARTx, uint16_t ch); 
+extern void Usart_SendArray( USART_TypeDef * pUSARTx, uint8_t *array, uint16_t num);
+extern int fputc(int ch, FILE *f);
+extern int fgetc(FILE *f);
+具体的一些变化声明变化可以再stm32f10x_define.h里有相应的声明
+还没有通过测试
