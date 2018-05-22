@@ -22,7 +22,8 @@ extern void Usart_SendHalfWord( USART_TypeDef * pUSARTx, uint16_t ch);  //发送一
 extern void Usart_SendArray( USART_TypeDef * pUSARTx, uint8_t *array, uint16_t num); //发送8位数组
 extern int fputc(int ch, FILE *f);//重定义printf
 extern int fgetc(FILE *f);//重定义scanf
-
+extern void Fast_UART_SET(uint UARTx);//快速UART设置 默认波特率115200，字长8，停止位1，不进行校验
+extern void set_P_S_VECTOR(USART_TypeDef * pUSARTx);//重定向C库的串口
 
 #endif
 	

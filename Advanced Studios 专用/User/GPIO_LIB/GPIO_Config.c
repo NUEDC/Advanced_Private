@@ -20,7 +20,7 @@ GPIO_CFG GPIO_CON;
           MID_Speed                   10MHz
           HIGH_Speed                  50MHz
 */
-extern int GPIO_INIT(GPIO_TypeDef* GPIOx,uint16_t pin,uint8_t Speed,uint8_t mode)
+int GPIO_INIT(GPIO_TypeDef* GPIOx,uint16_t pin,uint8_t Speed,uint8_t mode)
 {
 	
 	GPIO_InitTypeDef GPIO_InitStructure;   //Define a struct about gpio init
@@ -438,4 +438,37 @@ u16 GPIO_Read_Port(GPIO_TypeDef* GPIOx)
 	u16 Read_Val;
 	Read_Val = GPIO_ReadInputData(GPIOx);
 	return Read_Val;
+}
+ /*
+Ê±ÖÓ¹ÒÔØº¯Êý USER SHEET
+CLK_SET(uint GPIOX);
+                      ¶Ë¿Ú         
+//¶Ë¿ÚºÅ  GPIOX  GPIOA_SET\GPIOB_SET\GPIOC_SET\GPIOD_SET~~
+*/
+void CLK_SET(uint GPIOX)
+{
+	switch(GPIOX)
+	{
+		case 1:
+	      RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
+		break;
+		case 2:
+	      RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
+		break;
+		case 3:
+	      RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);
+		break;
+		case 4:
+	      RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE);
+		break;
+		case 5:
+	      RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE,ENABLE);
+		break;
+	  case 6:
+	      RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOF,ENABLE);
+		break;
+		case 7:
+	      RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOG,ENABLE);
+		break;
+	}
 }

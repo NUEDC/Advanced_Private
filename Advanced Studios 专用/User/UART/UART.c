@@ -5,7 +5,26 @@
 
 #define uint unsigned int
 #define uchar unsigned char
-	
+
+
+typedef struct  
+{
+ USART_TypeDef * pUSARTx;
+}Connect;
+
+Connect P_S_function;
+
+/*
+重定向C库函数 USER SHEET
+void set_P_S_VECTOR(USART_TypeDef * pUSARTx)
+																		串口
+pUSARTx USART1 USART2 USART3 UART4 UART5
+*/
+
+void set_P_S_VECTOR(USART_TypeDef * pUSARTx)
+{
+	P_S_function.pUSARTx=pUSARTx;
+}
 /*
 	串口初始化函数 USER SHEET
   UART_CONFIG(uint UARTx,uint BaudRate,uint Word_Length,uint Stop_Bits,uint Parity)
@@ -337,14 +356,14 @@ void Usart_SendHalfWord( USART_TypeDef * pUSARTx, uint16_t ch)
 
 
 
-///重定向c库函数printf到串口，重定向后可使用printf函数
+//重定向后可使用printf函数
 int fputc(int ch, FILE *f)
 {
 		/* 发送一个字节数据到串口 */
-		USART_SendData(USART3, (uint8_t) ch);
+		USART_SendData(P_S_function.pUSARTx, (uint8_t) ch);
 		
 		/* 等待发送完毕 */
-		while (USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET);		
+		while (USART_GetFlagStatus(P_S_function.pUSARTx, USART_FLAG_TXE) == RESET);		
 	
 		return (ch);
 }
@@ -353,8 +372,129 @@ int fputc(int ch, FILE *f)
 int fgetc(FILE *f)
 {
 		/* 等待串口输入数据 */
-		while (USART_GetFlagStatus(USART3, USART_FLAG_RXNE) == RESET);
+		while (USART_GetFlagStatus(P_S_function.pUSARTx, USART_FLAG_RXNE) == RESET);
 
-		return (int)USART_ReceiveData(USART3);
+		return (int)USART_ReceiveData(P_S_function.pUSARTx);
 }
-
+/*
+快速UART设置   默认配置：波特率115200，字长8，不进行校验，停止位1
+Fast_UART_SET(uint UARTx)
+                              串口
+UARTx  UART1_SET UART2_SET UART3_SET UART4_SET UART5_SET
+*/
+void Fast_UART_SET(uint UARTx)
+{
+	GPIO_InitTypeDef GPIO_InitStructure;
+	USART_InitTypeDef USART_InitStructure;
+	switch(UARTx)
+	{
+		case 1:
+			
+		//配置UART1  TX
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
+	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+	  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	  GPIO_Init(GPIOA, &GPIO_InitStructure);
+    //配置UART1  RX
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
+	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+	  GPIO_Init(GPIOA, &GPIO_InitStructure);
+		//配置输入输出数据
+		USART_InitStructure.USART_BaudRate = 115200;
+		USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+		USART_InitStructure.USART_StopBits = USART_StopBits_1;
+		USART_InitStructure.USART_Parity = USART_Parity_No;
+		USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+		USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+		USART_Init(USART1, &USART_InitStructure);
+		USART_Cmd(USART1, ENABLE);
+		break;
+		
+		case 2:
+			
+		//配置UART1  TX
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
+	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+	  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	  GPIO_Init(GPIOA, &GPIO_InitStructure);
+    //配置UART1  RX
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
+	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+	  GPIO_Init(GPIOA, &GPIO_InitStructure);
+		//配置输入输出数据
+		USART_InitStructure.USART_BaudRate = 115200;
+		USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+		USART_InitStructure.USART_StopBits = USART_StopBits_1;
+		USART_InitStructure.USART_Parity = USART_Parity_No;
+		USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+		USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+		USART_Init(USART2, &USART_InitStructure);
+		USART_Cmd(USART2, ENABLE);
+		break;
+		
+	case 3:
+			
+		//配置UART1  TX
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
+	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+	  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	  GPIO_Init(GPIOB, &GPIO_InitStructure);
+    //配置UART1  RX
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;
+	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+	  GPIO_Init(GPIOB, &GPIO_InitStructure);
+		//配置输入输出数据
+		USART_InitStructure.USART_BaudRate = 115200;
+		USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+		USART_InitStructure.USART_StopBits = USART_StopBits_1;
+	  USART_InitStructure.USART_Parity = USART_Parity_No;
+		USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+		USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+		USART_Init(USART3, &USART_InitStructure);
+		USART_Cmd(USART3, ENABLE);
+		break;
+	case 4:
+			
+		//配置UART1  TX
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
+	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+	  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	  GPIO_Init(GPIOC, &GPIO_InitStructure);
+    //配置UART1  RX
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;
+	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+	  GPIO_Init(GPIOC, &GPIO_InitStructure);
+		//配置输入输出数据
+		USART_InitStructure.USART_BaudRate = 115200;
+		USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+		USART_InitStructure.USART_StopBits = USART_StopBits_1;
+		USART_InitStructure.USART_Parity = USART_Parity_No;
+		USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+		USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+		USART_Init(UART4, &USART_InitStructure);
+		USART_Cmd(UART4, ENABLE);
+		break;
+		
+	case 5:
+			
+		//配置UART1  TX
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;
+	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+	  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	  GPIO_Init(GPIOC, &GPIO_InitStructure);
+    //配置UART1  RX
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
+	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+	  GPIO_Init(GPIOD, &GPIO_InitStructure);
+		//配置输入输出数据
+		USART_InitStructure.USART_BaudRate = 115200;
+		USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+		USART_InitStructure.USART_StopBits = USART_StopBits_1;
+		USART_InitStructure.USART_Parity = USART_Parity_No;
+		USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+		USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+		USART_Init(UART5, &USART_InitStructure);
+		USART_Cmd(UART5, ENABLE);
+		break;
+	}
+}

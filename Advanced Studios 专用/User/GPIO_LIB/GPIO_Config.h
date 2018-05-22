@@ -28,4 +28,5 @@ extern int GPIO_OUT(GPIO_TypeDef* port,uint16_t pin,BitAction data);//输出高低电
 extern uint8_t GPIO_READ(GPIO_TypeDef* GPIOx,u16 GPIO_Pin);//读取输入的高低电平
 extern void GPIO_Write_Port(GPIO_TypeDef* GPIOx,u16 Val);//向端口组输出数据，可以为16进制
 extern u16 GPIO_Read_Port(GPIO_TypeDef* GPIOx);//读取端口组十六位数据并返回
+extern void CLK_SET(uint GPIOX);//时钟挂载
 #endif
