@@ -33,3 +33,5 @@ extern int fgetc(FILE *f);
 2、添加了USART快速设置函数
 3、增加了默认printf函数重定向功能
 4、测试了部分GPIO_INIT_LIB内的函数，部分功能可以实现
+/****5.23修改意见*****/
+PORT_INIT Is missing!
