@@ -50,7 +50,8 @@
 #define UART4_SET                    4
 #define UART5_SET                    5
 
-
+#define Set_ENABLE                   1
+#define Set_DISABLE                  0
 
 typedef struct  
 {

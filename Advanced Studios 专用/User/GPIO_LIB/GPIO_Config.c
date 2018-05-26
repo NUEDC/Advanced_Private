@@ -157,7 +157,7 @@ PORT快速输出初始化函数 USER SHEET
 //引脚号  pin0  GPIO_Pin_0   pin1  GPIO_Pin_1  pin2  GPIO_Pin_2  ~~~~~~    pin15  GPIO_Pin_15
 //快速设置为50MHz推挽
 */
-int Fast_OutputSet(GPIO_TypeDef* GPIOx,uint pin)
+int Fast_OutputSet(GPIO_TypeDef* GPIOx,uint8_t pin)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;   //Define a struct about gpio init
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; //推挽模式
@@ -227,7 +227,7 @@ Fast_InputSet(GPIO_TypeDef* GPIOx,uint pin,uint Speed)
           MID_Speed                   10MHz
           HIGH_Speed                  50MHz
 */
-int Fast_InputSet(GPIO_TypeDef* GPIOx,uint pin,uint Speed)
+int Fast_InputSet(GPIO_TypeDef* GPIOx,uint8_t pin,uint8_t Speed)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;   //Define a struct about gpio init
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;  //浮空输入
@@ -312,7 +312,7 @@ Change_Port_Mode(GPIO_TypeDef* GPIOx,uint pin,uint mode,uint Speed)
           HIGH_Speed                  50MHz
 //模式  1  模拟输入  2  浮空输入  3  下拉输入    4  上拉输出   5  开漏输出   6  推挽输出   7  复用开漏输出  8  复用推挽输出
 */
-int Change_Port_Mode(GPIO_TypeDef* GPIOx,uint pin,uint mode,uint Speed)
+int Change_Port_Mode(GPIO_TypeDef* GPIOx,uint8_t pin,uint8_t mode,uint8_t Speed)
 {
   GPIO_INIT(GPIOx,pin,Speed,mode);
 	return 0;
@@ -323,7 +323,7 @@ Cut_PIN_CLK(uint port)
                端口            
 //端口号  GPIOA_SET GPIOA   GPIOB_SET GPIOB  GPIOC_SET  GPIOC  GPIOD_SET  GPIOD  GPIOE_SET  GPIOE   GPIOF_SET  GPIOF  GPIOG_SET  GPIOG
 */
-int Cut_PIN_CLK(uint port)
+int Cut_PIN_CLK(uint8_t port)
 {
 	switch(port)
 	{
@@ -358,7 +358,7 @@ Reconnect_PIN_CLK(uint port)
 //端口号  GPIOA_SET GPIOA   GPIOB_SET GPIOB  GPIOC_SET  GPIOC  GPIOD_SET  GPIOD  GPIOE_SET  GPIOE   GPIOF_SET  GPIOF  GPIOG_SET  GPIOG
 //使用先决条件 调用 Cut_PIN_CLK(uint port) 之后
 */
-int Reconnect_PIN_CLK(uint port)
+int Reconnect_PIN_CLK(uint8_t port)
 {
 		switch(port)
 	{
@@ -445,7 +445,7 @@ CLK_SET(uint GPIOX);
                       端口         
 //端口号  GPIOX  GPIOA_SET\GPIOB_SET\GPIOC_SET\GPIOD_SET~~
 */
-void CLK_SET(uint GPIOX)
+void CLK_SET(uint8_t GPIOX)
 {
 	switch(GPIOX)
 	{
