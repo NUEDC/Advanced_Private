@@ -35,3 +35,8 @@ extern int fgetc(FILE *f);
 4、测试了部分GPIO_INIT_LIB内的函数，部分功能可以实现
 /****5.23修改意见*****/
 PORT_INIT Is missing!
+/***2018/5/27*******/
+1、更新了Systick
+2、更新了TIM基本定时器
+具体变动在形影LIB和Define.h
+
