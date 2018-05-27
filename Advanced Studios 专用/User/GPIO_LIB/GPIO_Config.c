@@ -5,6 +5,7 @@
 	
 /*具体的细节定义见stm32f10x_define.h*/
 
+#define digitalToggle(p,i) {p->ODR ^=i;} //输出反转状态
 
 //data resister order to review the set before
 
@@ -470,5 +471,66 @@ void CLK_SET(uint8_t GPIOX)
 		case 7:
 	      RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOG,ENABLE);
 		break;
+	}
+}
+/*
+输出反转函数
+OUT_TOGGLE(GPIO_TypeDef* GPIOx,uint16_t pin)
+                  端口            引脚
+GPIOx GPIOA GPIOB......
+pin   Pin0 Pin1 Pin2 ......
+*/
+void OUT_TOGGLE(GPIO_TypeDef* GPIOx,uint16_t pin)
+{
+	switch(pin)
+	{
+		case 0:
+			digitalToggle(GPIOx,GPIO_Pin_0);
+			break;
+		case 1:
+			digitalToggle(GPIOx,GPIO_Pin_1);
+			break;
+		case 2:
+			digitalToggle(GPIOx,GPIO_Pin_2);
+			break;
+	  case 3:
+			digitalToggle(GPIOx,GPIO_Pin_3);
+			break;
+	  case 4:
+			digitalToggle(GPIOx,GPIO_Pin_4);
+			break;
+		case 5:
+			digitalToggle(GPIOx,GPIO_Pin_5);
+			break;
+		case 6:
+			digitalToggle(GPIOx,GPIO_Pin_6);
+			break;
+		case 7:
+			digitalToggle(GPIOx,GPIO_Pin_7);
+			break;
+		case 8:
+			digitalToggle(GPIOx,GPIO_Pin_8);
+			break;
+		case 9:
+			digitalToggle(GPIOx,GPIO_Pin_9);
+			break;
+	  case 10:
+			digitalToggle(GPIOx,GPIO_Pin_10);
+			break;
+	  case 11:
+			digitalToggle(GPIOx,GPIO_Pin_11);
+			break;
+		case 12:
+			digitalToggle(GPIOx,GPIO_Pin_12);
+			break;
+		case 13:
+			digitalToggle(GPIOx,GPIO_Pin_13);
+			break;
+		case 14:
+			digitalToggle(GPIOx,GPIO_Pin_14);
+			break;
+		case 15:
+			digitalToggle(GPIOx,GPIO_Pin_15);
+			break;
 	}
 }

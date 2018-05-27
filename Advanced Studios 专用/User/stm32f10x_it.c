@@ -25,8 +25,12 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
-#include "SysTick.h"
-#include "GPIO_Config.h"
+#include "TIM_Config.h"
+
+extern volatile uint32_t time;
+
+#define BASIC_TIM_IRQHandler_TIM6   TIM6_IRQHandler
+#define BASIC_TIM_IRQHandler_TIM7   TIM7_IRQHandler
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
   */
@@ -137,7 +141,6 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
-	SysTick_IRQ_Function();
 }
 
 /******************************************************************************/
@@ -146,6 +149,20 @@ void SysTick_Handler(void)
 /*  available peripheral interrupt handler's name please refer to the startup */
 /*  file (startup_stm32f10x_xx.s).                                            */
 /******************************************************************************/
+
+/**
+  * @brief  This function handles TIM2 interrupt request.
+  * @param  None
+  * @retval None
+  */
+void  BASIC_TIM_IRQHandler_TIM6 (void)
+{
+	if ( TIM_GetITStatus( TIM6, TIM_IT_Update) != RESET ) 
+	{	
+		time++;
+		TIM_ClearITPendingBit(TIM6 , TIM_FLAG_Update);  		 
+	}		 	
+}
 
 /**
   * @brief  This function handles PPP interrupt request.
