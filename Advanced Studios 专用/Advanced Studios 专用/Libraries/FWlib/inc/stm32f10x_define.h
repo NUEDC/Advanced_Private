@@ -111,7 +111,52 @@
 #define FTM3_CH4                     4
 
 
-#define            GENERAL_TIM_Prescaler         71
+#define GENERAL_TIM_Prescaler        71
+
+
+/*FTM_GET*/
+
+#define FTM_IN0                      0
+
+#define FTM_IN0_CH1                  1
+#define FTM_IN0_CH2                  2
+#define FTM_IN0_CH3                  3
+#define FTM_IN0_CH4                  4
+
+#define FTM_IN1                      1
+
+#define FTM_IN1_CH1                  1
+#define FTM_IN1_CH2                  2
+#define FTM_IN1_CH3                  3
+#define FTM_IN1_CH4                  4
+
+#define FTM_IN2                      2
+
+#define FTM_IN2_CH1                  1
+#define FTM_IN2_CH2                  2
+#define FTM_IN2_CH3                  3
+#define FTM_IN2_CH4                  4
+
+#define FTM_IN3                      3
+
+#define FTM_IN3_CH1                  1
+#define FTM_IN3_CH2                  2
+#define FTM_IN3_CH3                  3
+#define FTM_IN3_CH4                  4
+
+
+#define UP_Edge                      TIM_ICPolarity_Rising
+#define FALL_Edge                    TIM_ICPolarity_Falling
+
+#define FTM_IN_PERIOD                0xFFFF
+#define FTM_IN_PSC                   71
+
+/*中断相关*/
+#define GENERAL_TIM_IT_CCx           TIM_IT_CC1
+#define NVIC_FTM_IN0                 TIM2_IRQn
+#define NVIC_FTM_IN1                 TIM5_IRQn
+#define NVIC_FTM_IN2                 TIM3_IRQn
+#define NVIC_FTM_IN3                 TIM3_IRQn
 
 /**********************************/
 typedef struct  
@@ -122,6 +167,16 @@ typedef struct
 	GPIOMode_TypeDef GPIO_Mode;  //引脚模式
 	
 }GPIO_CFG;
+/**************FTM捕获结构体*****************/
+// 定时器输入捕获用户自定义变量结构体定义
+typedef struct
+{   
+	uint8_t   Capture_FinishFlag;   // 捕获结束标志位
+	uint8_t   Capture_StartFlag;    // 捕获开始标志位
+	uint16_t  Capture_CcrValue;     // 捕获寄存器的值
+	uint16_t  Capture_Period;       // 自动重装载寄存器更新标志 
+}TIM_ICUserValueTypeDef;
+
 
 
 #endif

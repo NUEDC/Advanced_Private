@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\User\TIM;..\..\User\GPIO_LIB;..\..\User\SysTick;..\..\User\UART</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\User\GPIO_Config;..\..\User\SysTick;..\..\User\TIM_Config;..\..\User\UART</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -566,24 +566,24 @@
               <FilePath>..\..\User\stm32f10x_it.h</FilePath>
             </File>
             <File>
-              <FileName>TIM_Config.c</FileName>
+              <FileName>gpio_config.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\User\TIM\TIM_Config.c</FilePath>
-            </File>
-            <File>
-              <FileName>GPIO_Config.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\GPIO_LIB\GPIO_Config.c</FilePath>
-            </File>
-            <File>
-              <FileName>UART.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\UART\UART.c</FilePath>
+              <FilePath>..\..\User\GPIO_Config\gpio_config.c</FilePath>
             </File>
             <File>
               <FileName>SysTick.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\SysTick\SysTick.c</FilePath>
+            </File>
+            <File>
+              <FileName>tim_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\TIM_Config\tim_config.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\UART\uart.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -29,7 +29,5 @@
 ..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h
 ..\..\output\main.o: ..\..\Libraries\FWlib\inc\misc.h
 ..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_define.h
-..\..\output\main.o: ..\..\User\GPIO_LIB\GPIO_Config.h
-..\..\output\main.o: ..\..\User\SysTick\Systick.h
-..\..\output\main.o: ..\..\User\UART\UART.h
-..\..\output\main.o: ..\..\User\TIM\TIM_Config.h
+..\..\output\main.o: ..\..\User\TIM_Config\tim_config.h
+..\..\output\main.o: ..\..\User\UART\uart.h

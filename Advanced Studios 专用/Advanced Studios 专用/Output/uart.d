@@ -1,4 +1,4 @@
-..\..\output\uart.o: ..\..\User\UART\UART.c
+..\..\output\uart.o: ..\..\User\UART\uart.c
 ..\..\output\uart.o: ..\..\Libraries\CMSIS\stm32f10x.h
 ..\..\output\uart.o: ..\..\Libraries\CMSIS\core_cm3.h
 ..\..\output\uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -28,6 +28,6 @@
 ..\..\output\uart.o: ..\..\Libraries\FWlib\inc\stm32f10x_usart.h
 ..\..\output\uart.o: ..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h
 ..\..\output\uart.o: ..\..\Libraries\FWlib\inc\misc.h
-..\..\output\uart.o: ..\..\User\UART\UART.h
+..\..\output\uart.o: ..\..\User\UART\uart.h
 ..\..\output\uart.o: ..\..\Libraries\FWlib\inc\stm32f10x_define.h
 ..\..\output\uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

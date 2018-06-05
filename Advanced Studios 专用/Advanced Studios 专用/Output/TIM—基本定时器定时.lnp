@@ -28,10 +28,10 @@
 "..\..\output\stm32f10x_define.o"
 "..\..\output\main.o"
 "..\..\output\stm32f10x_it.o"
-"..\..\output\tim_config.o"
 "..\..\output\gpio_config.o"
-"..\..\output\uart.o"
 "..\..\output\systick.o"
+"..\..\output\tim_config.o"
+"..\..\output\uart.o"
 --library_type=microlib --strict --scatter "..\..\Output\TIM—基本定时器定时.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

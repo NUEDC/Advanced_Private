@@ -29,5 +29,5 @@
 ..\..\output\systick.o: ..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h
 ..\..\output\systick.o: ..\..\Libraries\FWlib\inc\misc.h
 ..\..\output\systick.o: ..\..\User\SysTick\SysTick.h
-..\..\output\systick.o: ..\..\User\GPIO_LIB\GPIO_Config.h
+..\..\output\systick.o: ..\..\User\GPIO_Config\GPIO_Config.h
 ..\..\output\systick.o: ..\..\Libraries\FWlib\inc\stm32f10x_define.h

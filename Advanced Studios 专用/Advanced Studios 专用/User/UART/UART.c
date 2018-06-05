@@ -1,5 +1,5 @@
 #include "stm32f10x.h"
-#include "UART.h"
+#include "uart.h"
 #include "stm32f10x_define.h"
 #include <stdio.h>
 
@@ -386,10 +386,14 @@ void Fast_UART_SET(uint UARTx)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	USART_InitTypeDef USART_InitStructure;
+	  NVIC_InitTypeDef NVIC_InitStructure;
 	switch(UARTx)
 	{
 		case 1:
-			
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+		// 打开串口外设的时钟
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
+		
 		//配置UART1  TX
 	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
 	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
@@ -407,11 +411,34 @@ void Fast_UART_SET(uint UARTx)
 		USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 		USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 		USART_Init(USART1, &USART_InitStructure);
+		
+		// 串口中断优先级配置
+
+  
+  /* 嵌套向量中断控制器组选择 */
+  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+  
+  /* 配置USART为中断源 */
+  NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
+  /* 抢断优先级*/
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+  /* 子优先级 */
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+  /* 使能中断 */
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  /* 初始化配置NVIC */
+  NVIC_Init(&NVIC_InitStructure);
+	
+		// 使能串口接收中断
+		USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);		
+		
 		USART_Cmd(USART1, ENABLE);
 		break;
 		
 		case 2:
-			
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+		// 打开串口外设的时钟
+		RCC_APB2PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);	
 		//配置UART1  TX
 	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
 	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
@@ -429,11 +456,33 @@ void Fast_UART_SET(uint UARTx)
 		USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 		USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 		USART_Init(USART2, &USART_InitStructure);
+		
+				// 串口中断优先级配置
+
+  
+  /* 嵌套向量中断控制器组选择 */
+  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+  
+  /* 配置USART为中断源 */
+  NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;
+  /* 抢断优先级*/
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+  /* 子优先级 */
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+  /* 使能中断 */
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  /* 初始化配置NVIC */
+  NVIC_Init(&NVIC_InitStructure);
+	
+		// 使能串口接收中断
+		USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);		
 		USART_Cmd(USART2, ENABLE);
 		break;
 		
 	case 3:
-			
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+		// 打开串口外设的时钟
+		RCC_APB2PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);				
 		//配置UART1  TX
 	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
 	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
@@ -451,10 +500,32 @@ void Fast_UART_SET(uint UARTx)
 		USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 		USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 		USART_Init(USART3, &USART_InitStructure);
+	
+			// 串口中断优先级配置
+
+  
+  /* 嵌套向量中断控制器组选择 */
+  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+  
+  /* 配置USART为中断源 */
+  NVIC_InitStructure.NVIC_IRQChannel = USART3_IRQn;
+  /* 抢断优先级*/
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+  /* 子优先级 */
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+  /* 使能中断 */
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  /* 初始化配置NVIC */
+  NVIC_Init(&NVIC_InitStructure);
+	
+		// 使能串口接收中断
+		USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);		
 		USART_Cmd(USART3, ENABLE);
 		break;
 	case 4:
-			
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+		// 打开串口外设的时钟
+		RCC_APB2PeriphClockCmd(RCC_APB1Periph_UART4, ENABLE);				
 		//配置UART1  TX
 	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
 	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
@@ -472,11 +543,32 @@ void Fast_UART_SET(uint UARTx)
 		USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 		USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 		USART_Init(UART4, &USART_InitStructure);
+			// 串口中断优先级配置
+
+  
+  /* 嵌套向量中断控制器组选择 */
+  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+  
+  /* 配置USART为中断源 */
+  NVIC_InitStructure.NVIC_IRQChannel = UART4_IRQn;
+  /* 抢断优先级*/
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+  /* 子优先级 */
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+  /* 使能中断 */
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  /* 初始化配置NVIC */
+  NVIC_Init(&NVIC_InitStructure);
+	
+		// 使能串口接收中断
+		USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);		
 		USART_Cmd(UART4, ENABLE);
 		break;
 		
 	case 5:
-			
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+		// 打开串口外设的时钟
+		RCC_APB2PeriphClockCmd(RCC_APB1Periph_UART5, ENABLE);				
 		//配置UART1  TX
 	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;
 	  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
@@ -494,6 +586,25 @@ void Fast_UART_SET(uint UARTx)
 		USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 		USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 		USART_Init(UART5, &USART_InitStructure);
+			// 串口中断优先级配置
+
+  
+  /* 嵌套向量中断控制器组选择 */
+  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+  
+  /* 配置USART为中断源 */
+  NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
+  /* 抢断优先级*/
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+  /* 子优先级 */
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+  /* 使能中断 */
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  /* 初始化配置NVIC */
+  NVIC_Init(&NVIC_InitStructure);
+	
+		// 使能串口接收中断
+		USART_ITConfig(UART5, USART_IT_RXNE, ENABLE);		
 		USART_Cmd(UART5, ENABLE);
 		break;
 	}

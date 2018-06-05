@@ -1,4 +1,4 @@
-..\..\output\gpio_config.o: ..\..\User\GPIO_LIB\GPIO_Config.c
+..\..\output\gpio_config.o: ..\..\User\GPIO_Config\gpio_config.c
 ..\..\output\gpio_config.o: ..\..\Libraries\CMSIS\stm32f10x.h
 ..\..\output\gpio_config.o: ..\..\Libraries\CMSIS\core_cm3.h
 ..\..\output\gpio_config.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -28,5 +28,5 @@
 ..\..\output\gpio_config.o: ..\..\Libraries\FWlib\inc\stm32f10x_usart.h
 ..\..\output\gpio_config.o: ..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h
 ..\..\output\gpio_config.o: ..\..\Libraries\FWlib\inc\misc.h
-..\..\output\gpio_config.o: ..\..\User\GPIO_LIB\GPIO_Config.h
+..\..\output\gpio_config.o: ..\..\User\GPIO_Config\GPIO_Config.h
 ..\..\output\gpio_config.o: ..\..\Libraries\FWlib\inc\stm32f10x_define.h

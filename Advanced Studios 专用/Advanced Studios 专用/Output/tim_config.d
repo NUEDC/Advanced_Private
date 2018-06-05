@@ -1,4 +1,6 @@
-..\..\output\tim_config.o: ..\..\User\TIM\TIM_Config.c
+..\..\output\tim_config.o: ..\..\User\TIM_Config\tim_config.c
+..\..\output\tim_config.o: ..\..\User\TIM_Config\tim_config.h
+..\..\output\tim_config.o: ..\..\Libraries\FWlib\inc\stm32f10x_define.h
 ..\..\output\tim_config.o: ..\..\Libraries\CMSIS\stm32f10x.h
 ..\..\output\tim_config.o: ..\..\Libraries\CMSIS\core_cm3.h
 ..\..\output\tim_config.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -28,6 +30,4 @@
 ..\..\output\tim_config.o: ..\..\Libraries\FWlib\inc\stm32f10x_usart.h
 ..\..\output\tim_config.o: ..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h
 ..\..\output\tim_config.o: ..\..\Libraries\FWlib\inc\misc.h
-..\..\output\tim_config.o: ..\..\User\TIM\TIM_Config.h
-..\..\output\tim_config.o: ..\..\User\GPIO_LIB\GPIO_Config.h
-..\..\output\tim_config.o: ..\..\Libraries\FWlib\inc\stm32f10x_define.h
+..\..\output\tim_config.o: ..\..\User\UART\uart.h

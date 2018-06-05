@@ -25,13 +25,15 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
-#include "TIM_Config.h"
+#include "stm32f10x_define.h"
+#include "uart.h"
+#include "tim_config.h"
 
 extern volatile uint32_t time;
 
 #define BASIC_TIM_IRQHandler_TIM6   TIM6_IRQHandler
 #define BASIC_TIM_IRQHandler_TIM7   TIM7_IRQHandler
-
+#define FTM_Get_Handler             TIM5_IRQHandler            
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
   */
@@ -143,7 +145,10 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
 }
-
+void FTM_Get_Handler(void)
+{
+	FTM_GET(FTM_IN1,FALL_Edge);
+}
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
